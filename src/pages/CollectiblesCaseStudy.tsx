@@ -4,10 +4,6 @@ import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export default function CollectiblesCaseStudy() {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="min-h-screen bg-[#FDFCF8] text-[#1A1A1A] font-sans selection:bg-[#FFD1DC] selection:text-[#1A1A1A]">
       {/* Navigation */}

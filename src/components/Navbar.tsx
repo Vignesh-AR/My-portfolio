@@ -25,12 +25,12 @@ export default function Navbar() {
             vignesh<span className="text-moss">.</span>
           </a>
           
-          <nav key={scrolled ? 'sticky' : 'top'} className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/80">
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-ink/80">
             {links.map((link, i) => (
               <motion.a
-                key={link.name}
+                key={`${link.name}-${scrolled}`}
                 href={link.href}
-                initial={scrolled ? { opacity: 0, y: 10 } : false}
+                initial={scrolled ? { opacity: 0, y: 10 } : { opacity: 1, y: 0 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: scrolled ? 0.1 + i * 0.1 : 0, ease: "easeOut" }}
                 className="hover:text-moss transition-colors block"

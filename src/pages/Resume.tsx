@@ -4,10 +4,6 @@ import { ArrowLeft, Printer } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Resume() {
-  React.useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const handlePrint = () => {
     window.print();
   };

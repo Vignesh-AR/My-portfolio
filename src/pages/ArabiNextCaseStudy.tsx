@@ -9,10 +9,6 @@ export default function ArabiNextCaseStudy() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   const fadeIn = {
     hidden: { opacity: 0, y: 40 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }

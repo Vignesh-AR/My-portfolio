@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
@@ -12,19 +12,9 @@ import DotGridBackground from '../components/DotGridBackground';
 
 export default function Home() {
   const { hash } = useLocation();
-  const hasRestoredScroll = useRef(false);
 
   useEffect(() => {
-    // 1. Try to restore exact pixel scroll position only on initial mount
-    const savedScrollPos = sessionStorage.getItem('homeScrollPos');
-    
-    if (savedScrollPos && !hasRestoredScroll.current) {
-      setTimeout(() => {
-        window.scrollTo({ top: parseInt(savedScrollPos, 10), behavior: 'instant' });
-      }, 50);
-      hasRestoredScroll.current = true;
-    } else if (hash) {
-      // 2. Fallback to hash element if no exact position is saved, or if navigating via navbar
+    if (hash) {
       setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
@@ -33,25 +23,6 @@ export default function Home() {
       }, 100);
     }
   }, [hash]);
-
-  useEffect(() => {
-    // Save scroll position
-    const handleScroll = () => {
-      // Add a small threshold so we don't accidentally overwrite with 0 on abrupt unmounts
-      if (window.scrollY > 10) {
-        sessionStorage.setItem('homeScrollPos', window.scrollY.toString());
-      }
-    };
-
-    const timeoutId = setTimeout(() => {
-      window.addEventListener('scroll', handleScroll);
-    }, 500);
-
-    return () => {
-      clearTimeout(timeoutId);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-canvas">

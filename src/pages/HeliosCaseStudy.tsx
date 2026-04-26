@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 import { MobileMockup } from '../components/MobileMockup';
 
 export default function HeliosCaseStudy() {
-  // Ensure the page starts at the top when navigating to it
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="min-h-screen bg-canvas text-ink font-sans selection:bg-moss selection:text-white">
       {/* Navigation */}
